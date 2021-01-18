@@ -1,31 +1,35 @@
 "use strict";
 
-const answer = 3;
+const binarySearch = () => {
+    const answer = 3;
 
-let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let middle = Math.floor(array.length / 2);
+    let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let middle = Math.floor(array.length / 2);
 
-const binarySearch = (answer, array, middle) => {
-    if (array[middle] === answer) {
-        console.log(`Вы угадали! Ответ: ${array[middle]}`);
-    } else if (array[middle] > answer) {
-        console.log("Много!");
+    const check = () => {
+        if (array[middle] === answer) {
+            console.log(`Вы угадали! Ответ: ${array[middle]}`);
+        } else if (array[middle] > answer) {
+            console.log("Много!");
 
-        array = array.slice(0, middle);
-        middle = Math.floor(array.length / 2);
+            array = array.slice(0, middle);
+            middle = Math.floor(array.length / 2);
 
-        binarySearch(answer, array, middle);
-    } else if (array[middle] < answer) {
-        console.log("Мало!");
+            check();
+        } else if (array[middle] < answer) {
+            console.log("Мало!");
 
-        array = array.slice(middle + 1, array.length);
-        middle = Math.floor(array.length / 2);
+            array = array.slice(middle + 1, array.length);
+            middle = Math.floor(array.length / 2);
 
-        binarySearch(answer, array, middle);
+            check();
+        };
     };
+
+    check();
 };
 
-binarySearch(answer, array, middle);
+binarySearch();
 
 /*
  * Создали функции для проверке массива методом бинарного поиска
